@@ -1,0 +1,35 @@
+name: Build WaTrobos
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - name: Configure optional release signing
+        env:
+          STORE: ${{ secrets.WATROBOS_KEYSTORE_BASE64 }}
+          PASSWORD: ${{ secrets.WATROBOS_KEYSTORE_PASSWORD }}
+          ALIAS: ${{ secrets.WATROBOS_KEY_ALIAS }}
+        run: |
+          if [ -n "$STORE" ]; then
+            printf '%s' "$STORE" | base64 --decode > key.jks
+            printf 'androidStoreFile=key.jks\nandroidStorePassword=%s\nandroidKeyAlias=%s\nandroidKeyPassword=%s\n' "$PASSWORD" "$ALIAS" "$PASSWORD" > signing.properties
+          fi
+      - name: Build and test
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleWhatsappRelease :app:testWhatsappDebugUnitTest --console=plain
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WaTrobos-APK
+          path: app/build/outputs/apk/whatsapp/release/*.apk

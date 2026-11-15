@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="video_status_cutter_title">Pemotong video status</string>
+    <string name="video_status_cutter_summary">Pilih rentang atau bagi otomatis menjadi bagian 30, 60, atau 90 detik.</string>
+    <string name="video_status_open_title">Buka pemotong video status</string>
+    <string name="video_status_open_summary">Siapkan semua potongan berurutan, periksa, lalu kirim lewat WhatsApp.</string>
+</resources>

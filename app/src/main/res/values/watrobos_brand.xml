@@ -1,0 +1,18 @@
+<resources>
+    <string name="watrobos_nav_home">Beranda</string>
+    <string name="watrobos_nav_appearance">Tampilan</string>
+    <string name="watrobos_nav_recordings">Rekaman</string>
+    <string name="watrobos_eyebrow">MODUL PERSONALISASI</string>
+    <string name="watrobos_tagline">Jalan lain, kendali lebih.</string>
+    <string name="watrobos_created_by">Created by ASHA RIZKI</string>
+    <string name="watrobos_creator_role">Pengembang dan pengelola WaTrobos</string>
+    <string name="watrobos_origin">Berbasis WaEnhancer oleh Dev4Mod dan para kontributor. Modifikasi WaTrobos oleh ASHA RIZKI.</string>
+    <string name="watrobos_release_title">Edisi WaTrobos</string>
+    <string name="watrobos_release_summary">Versi %1$s • Edisi Indonesia</string>
+    <string name="watrobos_device_info">PERANGKAT &amp; KOMPATIBILITAS</string>
+    <color name="watrobos_navy">#142238</color>
+    <color name="watrobos_orange">#FF8A3D</color>
+    <color name="watrobos_cream">#FFF4E8</color>
+    <color name="watrobos_page">#F2F5FA</color>
+    <color name="watrobos_border">#DCE3EE</color>
+</resources>

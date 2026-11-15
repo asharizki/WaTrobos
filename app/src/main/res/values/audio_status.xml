@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="audio_to_voice_status_title">Audio lokal ke status suara</string>
+    <string name="audio_to_voice_status_summary">Tambahkan tombol pilih audio di pembuat status suara WhatsApp. Pilih rentang audio atau bagi otomatis per 30 detik. Periksa pratinjau, lalu kirim bagian lewat WhatsApp.</string>
+</resources>
