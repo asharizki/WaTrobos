@@ -1,12 +1,13 @@
-# WaTrobos
+﻿# WaTrobos
 
 <p><img src="docs/watrobos-icon.svg" alt="Ikon WaTrobos" width="112"></p>
 
 **WaTrobos** adalah modul Xposed untuk WhatsApp Messenger di Android, dikelola
-oleh **ASHA RIZKI**. Berbasis [Dev4Mod/WaEnhancer](https://github.com/Dev4Mod/WaEnhancer)
+oleh **asHDEV**. Berbasis [Dev4Mod/WaEnhancer](https://github.com/Dev4Mod/WaEnhancer)
 dengan antarmuka bahasa Indonesia.
 
 [Unduh APK dan source](https://github.com/asharizki/WaTrobos/releases/latest)
+· [Komunitas Telegram](https://t.me/WaTrobosIndonesia)
 · [Riwayat perubahan](CHANGELOG.md)
 · [Laporkan masalah](https://github.com/asharizki/WaTrobos/issues)
 

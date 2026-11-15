@@ -1,5 +1,10 @@
 # Riwayat WaTrobos
 
+## 1.0.12 — 15 November 2026
+
+- Arahkan tautan di halaman Tentang ke komunitas WaTrobos Indonesia dan repo GitHub WaTrobos.
+- Tampilkan nama pengelola asHDEV.
+
 ## 1.0.11 — 15 November 2026
 
 - Kelompokkan daftar kompatibilitas di Beranda berdasarkan seri dan tampilkan nomor build yang didukung.

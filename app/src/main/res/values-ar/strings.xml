@@ -2,7 +2,7 @@
 <resources>
     <string name="force_restore_backup">استعادة النسخة الاحتياطية بالقوة</string>
     <string name="force_restore_backup_summary">تشغيل استعادة شاشة النسخ الاحتياطي يدوياً. استخدم هذا إذا قمت بتخطي الاستعادة أثناء الإعداد.</string>
-    <string name="app_desc">WaTrobos — Modul personalisasi WhatsApp oleh ASHA RIZKI</string>
+    <string name="app_desc">WaTrobos — Modul personalisasi WhatsApp oleh asHDEV</string>
     <string name="antirevoke">منع حذف الرسائل</string>
     <string name="antirevoke_sum">عند التنشيط، لن يتم حذف الرسائل نيابةً عنك.</string>
     <string name="ghostmode">إخفاء جارية الكتابة</string>
@@ -303,16 +303,16 @@
     <string name="select_status_type">تحديد نوع الحالة</string>
     <string name="open_camera">فتح الكاميرا</string>
     <string name="edit_text">تحرير النص</string>
-    <string name="about_info">WaTrobos adalah fork WaEnhancer dengan identitas visual dan dashboard Indonesia oleh ASHA RIZKI. Fitur privasi, personalisasi, media, dan perbaikan kompatibilitas tetap menggunakan basis WaEnhancer.</string>
+    <string name="about_info">WaTrobos adalah fork WaEnhancer dengan identitas visual dan dashboard Indonesia oleh asHDEV. Fitur privasi, personalisasi, media, dan perbaikan kompatibilitas tetap menggunakan basis WaEnhancer.</string>
     <string name="installation">تثبيت</string>
     <string name="installation_desc">1. Pasang APK WaTrobos.\n2. Aktifkan modul di Vector untuk WhatsApp.\n3. Nonaktifkan varian WaEnhancer lainnya.\n4. Atur fitur melalui WaTrobos.\n5. Mulai ulang WhatsApp.</string>
-    <string name="go_to_telegram">Komunitas proyek asal</string>
-    <string name="go_to_github">Source proyek asal</string>
+    <string name="go_to_telegram">Komunitas WaTrobos</string>
+    <string name="go_to_github">Source WaTrobos</string>
     <string name="contributors">Kontributor</string>
     <string name="support">الدعم</string>
-    <string name="support_desc">WaTrobos dikembangkan dan dikelola oleh ASHA RIZKI. Tautan komunitas dan source di atas merujuk pada proyek asal WaEnhancer.</string>
+    <string name="support_desc">WaTrobos dikembangkan dan dikelola oleh asHDEV. Tautan di atas membuka komunitas Telegram dan repositori GitHub WaTrobos.</string>
     <string name="license">التَرْخِيصْ</string>
-    <string name="license_desc">WaTrobos menggunakan lisensi GNU GPL-3.0. Berbasis WaEnhancer oleh Dev4Mod dan para kontributor. Identitas visual dan modifikasi WaTrobos oleh ASHA RIZKI. Kredit, pemberitahuan hak cipta, dan lisensi proyek asal tetap dipertahankan. Source yang sesuai disertakan bersama rilis.</string>
+    <string name="license_desc">WaTrobos menggunakan lisensi GNU GPL-3.0. Berbasis WaEnhancer oleh Dev4Mod dan para kontributor. Identitas visual dan modifikasi WaTrobos oleh asHDEV. Kredit, pemberitahuan hak cipta, dan lisensi proyek asal tetap dipertahankan. Source yang sesuai disertakan bersama rilis.</string>
     <string name="select_a_color">اختر اللون</string>
     <string name="custom_appearance">المظهر المخصص</string>
     <string name="custom_filters_sum">تفعيل الفلاتر حسب المعرف و CSS المخصص</string>

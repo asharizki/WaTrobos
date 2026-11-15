@@ -47,8 +47,8 @@ android {
         minSdk = 28
         //noinspection OldTargetApi
         targetSdk = 34
-        versionCode = 10016
-        versionName = if (localBuild) "1.0.11-dev ($gitHash)" else "1.0.11"
+        versionCode = 10017
+        versionName = if (localBuild) "1.0.12-dev ($gitHash)" else "1.0.12"
         multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

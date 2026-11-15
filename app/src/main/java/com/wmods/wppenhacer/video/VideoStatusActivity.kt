@@ -84,7 +84,7 @@ class VideoStatusActivity : Activity() {
         body = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(20), dp(16), dp(20), dp(24)); setBackgroundColor(Color.rgb(11, 21, 37)) }
         setContentView(ScrollView(this).apply { isFillViewport = true; addView(body) })
         text("Pemotong video status", 25f).setTypeface(null, Typeface.BOLD)
-        text("WaTrobos • ASHA RIZKI", 13f)
+        text("WaTrobos • asHDEV", 13f)
         text("Pilih bagian atau bagi seluruh video berurutan. Video disiapkan dahulu; publikasi tetap melalui tombol kirim WhatsApp.")
         sourceButton = button("Pilih video dari galeri") { choose() }
         info = text("Belum ada video. Sumber maksimal 10 menit / 500 MB.")
