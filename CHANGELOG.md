@@ -1,5 +1,11 @@
 # Riwayat WaTrobos
 
+## 1.0.14 — 16 November 2026
+
+- Perbaiki pencarian media untuk Unduh Status dan Bagikan Status pada WhatsApp Messenger 2.26.44.90.
+- Lewati file media kosong, sementara, atau yang masih berubah.
+- Ganti toast setelah unduhan berhasil menjadi **Status sudah kedonlod tod**.
+
 ## 1.0.12 — 15 November 2026
 
 - Arahkan tautan di halaman Tentang ke komunitas WaTrobos Indonesia dan repo GitHub WaTrobos.

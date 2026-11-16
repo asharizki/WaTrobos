@@ -23,7 +23,16 @@ class StatusItemWpp private constructor(
     val isMediaFile: Boolean
         get() = directFMessage?.isMediaFile ?: fStatus?.isMediaFile ?: false
 
-    fun getMediaFile(): File? = directFMessage?.mediaFile ?: fStatus?.getMediaFile()
+    fun getMediaFile(): File? {
+        val message = fMessage
+        return StatusMediaFile.resolve(
+            preferred = listOfNotNull(
+                runCatching { fStatus?.getMediaFile() }.getOrNull(),
+                runCatching { message?.mediaFile }.getOrNull()
+            ),
+            roots = listOfNotNull(fStatus?.fstatus, message?.getObject())
+        )
+    }
 
     companion object {
         private val fStatusFieldCache = mutableMapOf<Class<*>, Field?>()

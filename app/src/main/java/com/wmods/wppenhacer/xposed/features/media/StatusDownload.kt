@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -110,7 +111,12 @@ class StatusDownload(loader: ClassLoader, preferences: SharedPreferences) :
                             arrayListOf(Uri.fromFile(file))
                         )
                         intent.putExtra("android.intent.extra.TEXT", messageText)
-                        WppCore.getCurrentActivity()?.startActivity(intent)
+                        try {
+                            WppCore.getCurrentActivity()?.startActivity(intent)
+                        } catch (e: Exception) {
+                            Log.w("WaTrobosStatus", "Unable to open status composer", e)
+                            Utils.showToast(Utils.getString(R.string.download_not_available), Toast.LENGTH_SHORT)
+                        }
                     }
                 } catch (e: Throwable) {
                     Utils.showToast(e.message, Toast.LENGTH_SHORT)
@@ -133,16 +139,15 @@ class StatusDownload(loader: ClassLoader, preferences: SharedPreferences) :
                     )
                     return@execute
                 }
-                val userJid = statusItem.senderJid ?: return@execute
-                val fileType = file.name.substring(file.name.lastIndexOf(".") + 1)
+                val fileType = file.extension
                 val destination = getStatusDestination(file)
-                val name = Utils.generateName(userJid, fileType)
-                var savedTo = destination
-                val error = Utils.copyFile(file, destination, name) { savedTo = it }
+                val name = statusItem.senderJid?.let { Utils.generateName(it, fileType) }
+                    ?: file.name
+                val error = Utils.copyFile(file, destination, name)
 
                 if (TextUtils.isEmpty(error)) {
                     Utils.showToast(
-                        Utils.getString(R.string.saved_to) + savedTo,
+                        Utils.getString(R.string.status_download_saved),
                         Toast.LENGTH_SHORT
                     )
                 } else {
