@@ -1,10 +1,15 @@
-﻿# WaTrobos
+﻿# WaTrobos — Modul WhatsApp berbasis WaEnhancer
 
 <p><img src="docs/watrobos-icon.svg" alt="Ikon WaTrobos" width="112"></p>
 
 **WaTrobos** adalah modul Xposed untuk WhatsApp Messenger di Android, dikelola
 oleh **asHDEV**. Berbasis [Dev4Mod/WaEnhancer](https://github.com/Dev4Mod/WaEnhancer)
-dengan antarmuka bahasa Indonesia.
+dengan antarmuka bahasa Indonesia. WaTrobos menyediakan pengaturan privasi,
+tab Chat dan Grup terpisah, pemotong status audio/video, serta pesan terjadwal.
+
+WaTrobos is an open-source WhatsApp Xposed module based on WaEnhancer,
+with an Indonesian interface, separate chat and group tabs, status media tools,
+and scheduled messages.
 
 [Unduh APK dan source](https://github.com/asharizki/WaTrobos/releases/latest)
 · [Komunitas Telegram](https://t.me/WaTrobosIndonesia)
@@ -42,6 +47,28 @@ publikasi status belum diuji.
 3. Di Vector, aktifkan WaTrobos dan pilih WhatsApp Messenger (com.whatsapp)
    sebagai cakupannya. Nonaktifkan modul WaEnhancer lain di cakupan WhatsApp.
 4. Buka WaTrobos untuk mengatur fitur, lalu mulai ulang WhatsApp.
+
+## Pertanyaan umum
+
+### Apa hubungan WaTrobos dengan WaEnhancer atau WA Enhancer?
+
+WaTrobos dikembangkan dari source WaEnhancer milik Dev4Mod. Pengembangan
+fork ini mencakup antarmuka Indonesia, fitur pemotong status, dan penyesuaian
+kompatibilitas untuk build WhatsApp Messenger yang tercantum di atas.
+Kode tersedia dengan lisensi GPL-3.0.
+
+### Saya mencari WAMod atau WA Mod. Bagaimana cara memakai WaTrobos?
+
+WaTrobos dipasang sebagai APK modul, lalu diaktifkan pada WhatsApp Messenger
+melalui framework Xposed yang kompatibel di HP rooted. Ikuti panduan instalasi
+di atas. Kompatibilitas fitur bergantung pada versi WhatsApp dan framework.
+
+### Di mana unduh APK WaTrobos terbaru?
+
+APK bertanda tangan dan ZIP source tersedia pada
+[halaman rilis resmi WaTrobos](https://github.com/asharizki/WaTrobos/releases/latest).
+Dukungan dan diskusi pengguna tersedia di
+[komunitas WaTrobos Indonesia](https://t.me/WaTrobosIndonesia).
 
 ## Build
 
