@@ -55,7 +55,7 @@ internal class AudioStatusBatchBridge(
                 listOf("Sag", "AW1", "90y", "8FN", "A07")
             "2.26.43.76" -> listOf("9XG", "FT1", "8uq", "AqM", "AGb") to
                 listOf("SZr", "AVt", "90p", "8FB", "A07")
-            "2.26.44.90" -> listOf("9HF", "Md5", "8c8", "AfM", "A4A") to
+            "2.26.44.90", "2.26.44.92" -> listOf("9HF", "Md5", "8c8", "AfM", "A4A") to
                 listOf("Sm7", "AIc", "L5W", "7xw", "A06")
             else -> return
         }

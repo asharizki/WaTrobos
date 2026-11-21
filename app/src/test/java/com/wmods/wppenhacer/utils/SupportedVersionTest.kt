@@ -6,11 +6,11 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SupportedVersionTest {
-    private val rules = listOf("2.26.41.xx", "2.26.42.74", "2.26.43.74", "2.26.43.76", "2.26.44.90")
+    private val rules = listOf("2.26.41.xx", "2.26.42.74", "2.26.43.74", "2.26.43.76", "2.26.44.90", "2.26.44.92")
 
     @Test fun displaysSpecificBuildsUnderTheirSeries() {
         assertEquals(
-            "2.26.41.xx\n2.26.42.xx (build 74)\n2.26.43.xx (build 74, 76)\n2.26.44.xx (build 90)",
+            "2.26.41.xx\n2.26.42.xx (build 74)\n2.26.43.xx (build 74, 76)\n2.26.44.xx (build 90, 92)",
             SupportedVersion.displayList(rules)
         )
     }
@@ -26,6 +26,7 @@ class SupportedVersionTest {
         assertFalse(SupportedVersion.matches("2.26.43.75", rules))
         assertFalse(SupportedVersion.matches("2.26.43.740", rules))
         assertTrue(SupportedVersion.matches("2.26.44.90", rules))
+        assertTrue(SupportedVersion.matches("2.26.44.92", rules))
         assertFalse(SupportedVersion.matches("2.26.44.74", rules))
         assertFalse(SupportedVersion.matches("2.26.44.91", rules))
         assertFalse(SupportedVersion.matches("2.26.410.1", rules))

@@ -28,9 +28,9 @@ dengan antarmuka bahasa Indonesia.
 | 2.26.34.xx sampai 2.26.41.xx | Seri dalam daftar kompatibilitas |
 | 2.26.42.xx | Build 74 |
 | 2.26.43.xx | Build 74 dan 76 |
-| 2.26.44.xx | Build 90 |
+| 2.26.44.xx | Build 90 dan 92 |
 
-Pengujian WhatsApp Messenger **2.26.44.90** memakai Xiaomi 13T, Android 16,
+Pengujian WhatsApp Messenger **2.26.44.90** dan **2.26.44.92** memakai Xiaomi 13T, Android 16,
 dan Vector. Tab Chat/Grup, pembukaan editor video, dan pratinjau tiga klip
 audio diperiksa. Penjadwal berhasil dimuat. Pengiriman pesan terjadwal dan
 publikasi status belum diuji.

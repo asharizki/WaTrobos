@@ -1,5 +1,12 @@
 # Riwayat WaTrobos
 
+## 1.0.15 — 21 November 2026
+
+- Tambahkan dukungan untuk WhatsApp Messenger 2.26.44.92.
+- Pemetaan kelas status suara otomatis, unduh dan bagikan status, serta penjadwal pesan
+  diverifikasi ulang pada 2.26.44.92 dan tetap memakai pemetaan 2.26.44.90.
+- Modul sebelumnya menolak berjalan pada 2.26.44.92 sehingga seluruh hook tidak dimuat.
+
 ## 1.0.14 — 16 November 2026
 
 - Perbaiki pencarian media untuk Unduh Status dan Bagikan Status pada WhatsApp Messenger 2.26.44.90.
