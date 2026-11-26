@@ -47,8 +47,8 @@ android {
         minSdk = 28
         //noinspection OldTargetApi
         targetSdk = 34
-        versionCode = 10020
-        versionName = if (localBuild) "1.0.15-dev ($gitHash)" else "1.0.15"
+        versionCode = 10022
+        versionName = if (localBuild) "1.0.17-dev ($gitHash)" else "1.0.17"
         multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -74,8 +74,8 @@ android {
 
         buildConfigField("Boolean", "RESET_ON_INSTALL", "true")
         // Set these to the WaTrobos repository when its public URL is available.
-        buildConfigField("String", "RELEASES_API_URL", "\"${providers.gradleProperty("releasesApiUrl").orNull.orEmpty()}\"")
-        buildConfigField("String", "RELEASES_PAGE_URL", "\"${providers.gradleProperty("releasesPageUrl").orNull.orEmpty()}\"")
+        buildConfigField("String", "RELEASES_API_URL", "\"${providers.gradleProperty("releasesApiUrl").getOrElse("https://api.github.com/repos/asharizki/WaTrobos/releases/latest")}\"")
+        buildConfigField("String", "RELEASES_PAGE_URL", "\"${providers.gradleProperty("releasesPageUrl").getOrElse("https://github.com/asharizki/WaTrobos/releases")}\"")
 
     }
 

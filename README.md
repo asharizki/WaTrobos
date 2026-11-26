@@ -34,11 +34,15 @@ audio/video status tools, and scheduled messages.
 | 2.26.42.xx | Build 74 |
 | 2.26.43.xx | Build 74 dan 76 |
 | 2.26.44.xx | Build 90 dan 92 |
+| 2.26.46.xx | Build 82 (adaptasi 1.0.16) |
 
 Pengujian WhatsApp Messenger **2.26.44.90** dan **2.26.44.92** memakai Xiaomi 13T, Android 16,
 dan Vector. Tab Chat/Grup, pembukaan editor video, dan pratinjau tiga klip
 audio diperiksa. Penjadwal berhasil dimuat. Pengiriman pesan terjadwal dan
 publikasi status belum diuji.
+
+Pada 1.0.16, adapter status audio disesuaikan untuk struktur internal 2.26.46.82.
+Lihat [catatan kompatibilitas 2.26.46.82](docs/compat-2.26.46.82.md) untuk hasil verifikasi.
 
 ## Instalasi
 

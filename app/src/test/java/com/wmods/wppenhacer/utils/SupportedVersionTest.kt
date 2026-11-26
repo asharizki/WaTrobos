@@ -6,13 +6,20 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SupportedVersionTest {
-    private val rules = listOf("2.26.41.xx", "2.26.42.74", "2.26.43.74", "2.26.43.76", "2.26.44.90", "2.26.44.92")
+    private val rules = listOf("2.26.41.xx", "2.26.42.74", "2.26.43.74", "2.26.43.76", "2.26.44.90", "2.26.44.92", "2.26.46.82")
 
     @Test fun displaysSpecificBuildsUnderTheirSeries() {
         assertEquals(
-            "2.26.41.xx\n2.26.42.xx (build 74)\n2.26.43.xx (build 74, 76)\n2.26.44.xx (build 90, 92)",
+            "2.26.41.xx\n2.26.42.xx (build 74)\n2.26.43.xx (build 74, 76)\n2.26.44.xx (build 90, 92)\n2.26.46.xx (build 82)",
             SupportedVersion.displayList(rules)
         )
+    }
+
+    @Test fun acceptsOnlyVerified46Build() {
+        assertTrue(SupportedVersion.matches("2.26.46.82", rules))
+        assertFalse(SupportedVersion.matches("2.26.46.81", rules))
+        assertFalse(SupportedVersion.matches("2.26.46.83", rules))
+        assertFalse(SupportedVersion.matches("2.26.46.820", rules))
     }
 
     @Test fun acceptsOnlyTheExperimentalBuildAndExistingBranch() {

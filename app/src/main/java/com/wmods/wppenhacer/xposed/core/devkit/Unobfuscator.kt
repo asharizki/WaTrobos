@@ -483,10 +483,8 @@ object Unobfuscator {
                 "com.whatsapp.conversationslist.ConversationsFragment",
                 classLoader
             )
-            Arrays.stream(clsFrag.declaredMethods).parallel()
-                .filter { m -> m.parameterTypes.isEmpty() && m.returnType == MutableList::class.java }
-                .findFirst()
-                .orElse(null) ?: throw Exception("TabFragment method not found")
+            com.wmods.wppenhacer.utils.ConversationMethodResolver.chatList(clsFrag)
+                ?: throw Exception("TabFragment method not found")
         }
     }
 
@@ -1329,6 +1327,14 @@ object Unobfuscator {
     @JvmStatic
     fun loadOriginalMessageKey(loader: ClassLoader): Method {
         return UnobfuscatorCache.getInstance().getMethod(loader) {
+            // 46.82 removes the log-string anchor and moves the helper to a static method.
+            val version = Utils.application.packageManager.getPackageInfo(Utils.application.packageName, 0).versionName
+            if (version == "2.26.46.82") {
+                return@getMethod ReflectionUtils.findClass("X.1BO", loader)
+                    .getDeclaredMethod("A00", loadFMessageClass(loader)).also {
+                        check(Modifier.isStatic(it.modifiers) && it.returnType == loadMessageKeyField(loader).type)
+                    }
+            }
             findFirstMethodUsingStrings(
                 loader,
                 StringMatchType.Contains,

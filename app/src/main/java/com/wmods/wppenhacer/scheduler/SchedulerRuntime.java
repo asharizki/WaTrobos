@@ -32,7 +32,7 @@ public final class SchedulerRuntime {
         if(!installed.compareAndSet(false,true))return;app=application;
         try {
             String v=app.getPackageManager().getPackageInfo(app.getPackageName(),0).versionName;
-            if(!"2.26.43.74".equals(v) && !"2.26.43.76".equals(v) && !"2.26.44.90".equals(v) && !"2.26.44.92".equals(v)){health("Tidak didukung: WhatsApp "+v+". Perlu pemeriksaan ulang.");return;}
+            if(!"2.26.43.74".equals(v) && !"2.26.43.76".equals(v) && !"2.26.44.90".equals(v) && !"2.26.44.92".equals(v) && !"2.26.46.82".equals(v)){health("Tidak didukung: WhatsApp "+v+". Perlu pemeriksaan ulang.");return;}
             hostVersion=v;
             replyClass=loader.loadClass(SERVICE);original=replyClass.getDeclaredMethod("onHandleIntent",Intent.class);original.setAccessible(true);
             PendingIntent old=PendingIntent.getService(app,0x41534841,new Intent(TICK).setClassName(app.getPackageName(),SERVICE),PendingIntent.FLAG_NO_CREATE|PendingIntent.FLAG_IMMUTABLE);

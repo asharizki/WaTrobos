@@ -120,7 +120,10 @@ class FMessageWpp(fMessage: Any?) {
     }
 
     val originalKey: Key by lazy {
-        Key(getOriginalMessageKey?.invoke(fmessage), this)
+        val method = getOriginalMessageKey
+        val value = if (method != null && java.lang.reflect.Modifier.isStatic(method.modifiers))
+            method.invoke(null, fmessage) else method?.invoke(fmessage)
+        Key(value, this)
     }
 
     val isBroadcast: Boolean

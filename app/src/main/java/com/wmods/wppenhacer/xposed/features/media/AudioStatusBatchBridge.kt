@@ -57,6 +57,8 @@ internal class AudioStatusBatchBridge(
                 listOf("SZr", "AVt", "90p", "8FB", "A07")
             "2.26.44.90", "2.26.44.92" -> listOf("9HF", "Md5", "8c8", "AfM", "A4A") to
                 listOf("Sm7", "AIc", "L5W", "7xw", "A06")
+            "2.26.46.82" -> listOf("7vF", "1f6", "7Q2", "9FY", "8iP") to
+                listOf("8kK", "8x4", "7PF", "4jZ", "A05")
             else -> return
         }
         val composer = loader.loadClass("com.whatsapp.status.composer.VoiceStatusComposerFragment")
@@ -65,8 +67,12 @@ internal class AudioStatusBatchBridge(
         val providerFieldName = statusTypes[4]
         val build = builder.declaredMethods.single { it.name == "A05" && it.parameterTypes.size == 9 && it.parameterTypes[0] == Uri::class.java }
         val enqueueMethod = enqueue.declaredMethods.single { it.name == "A02" && it.parameterTypes.size == 14 && it.parameterTypes[4] == group }
-        val mediaFactory = media.getDeclaredMethod("A01", File::class.java)
-        val durationMethod = duration.getDeclaredMethod("A00", File::class.java)
+        val newMediaApi = version == "2.26.46.82"
+        // 46.82 constructs an empty native media holder then assigns its File.
+        val mediaFactory = if (newMediaApi) media.getDeclaredMethod("A00")
+            else media.getDeclaredMethod("A01", File::class.java)
+        val mediaSetFile = if (newMediaApi) media.getDeclaredMethod("A0A", File::class.java) else null
+        val durationMethod = duration.getDeclaredMethod(if (newMediaApi) "A01" else "A00", File::class.java)
         val metaCtor = metadata.getDeclaredConstructor(String::class.java, ByteArray::class.java,
             Int::class.javaPrimitiveType, Int::class.javaPrimitiveType, Int::class.javaPrimitiveType,
             Int::class.javaPrimitiveType, Int::class.javaPrimitiveType, Boolean::class.javaPrimitiveType, Boolean::class.javaPrimitiveType)
@@ -86,7 +92,9 @@ internal class AudioStatusBatchBridge(
             values[0] = Uri.parse(clip.file.absolutePath)
             values[2] = metaCtor.newInstance(fields[0], clip.waveform, fields[1], fields[2],
                 fields[3], fields[4], fields[5], fields[6], fields[7])
-            values[3] = mediaFactory.invoke(null, clip.file)
+            values[3] = if (newMediaApi) mediaFactory.invoke(null).also {
+                mediaSetFile!!.invoke(it, clip.file)
+            } else mediaFactory.invoke(null, clip.file)
             values[5] = clip.file.name
             values[6] = durationMethod.invoke(null, clip.file)
             return build.invoke(template.receiver, *values) ?: error("Cannot build status part")
@@ -110,8 +118,8 @@ internal class AudioStatusBatchBridge(
         val providerField = delivery.type.getDeclaredField(providerFieldName).apply { isAccessible = true }
         val providerGet = hostClass("00x").getMethod("get")
         val privacyProvider = composer.getDeclaredField("A0c").apply { isAccessible = true }
-        val privacyGet = privacy.getDeclaredMethod("A01", privacyProvider.type)
-        val setAudience = audienceClass.getDeclaredMethod("A08", audienceData)
+        val privacyGet = privacy.getDeclaredMethod(if (newMediaApi) "A0I" else "A01", privacyProvider.type)
+        val setAudience = audienceClass.getDeclaredMethod(if (newMediaApi) "A07" else "A08", audienceData)
         prepareCheck = { target, clips ->
             val receiver = providerGet.invoke(providerField.get(delivery.get(target))) ?: error("Status builder unavailable")
             val recipients = recipientsMethod.invoke(null, target) as List<*>

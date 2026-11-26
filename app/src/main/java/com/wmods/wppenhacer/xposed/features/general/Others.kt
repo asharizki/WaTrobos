@@ -320,6 +320,14 @@ class Others(loader: ClassLoader, preferences: SharedPreferences) : Feature(load
             }
         }
 
+        // 46.82 retains a fixed-height RecyclerView header around the hidden filter.
+        // Target only the verified filter wrappers, never the list/search/archive row.
+        val version = Utils.application.packageManager.getPackageInfo(Utils.application.packageName, 0).versionName
+        if (version == "2.26.46.82") {
+            collapseHomeFilterWrappers()
+            return
+        }
+
         val filterDimenId = try {
             Unobfuscator.loadFilterDimenId(classLoader)
         } catch (e: Throwable) {
@@ -341,6 +349,32 @@ class Others(loader: ClassLoader, preferences: SharedPreferences) : Feature(load
             }
         } catch (e: Throwable) {
             logDebug(e)
+        }
+    }
+
+    private fun collapseHomeFilterWrappers() {
+        val ids = com.wmods.wppenhacer.utils.HomeFilterLayoutPolicy.wrapperNames
+            .map { Utils.getID(it, "id") }.filter { it > 0 }.toSet()
+        if (ids.isEmpty()) return
+        val setMeasuredSize = View::class.java.getDeclaredMethod(
+            "setMeasuredDimension", Int::class.javaPrimitiveType!!, Int::class.javaPrimitiveType!!
+        ).apply { isAccessible = true }
+
+        ViewHookDispatcher.onAttachedToWindow(this) { view ->
+            if (view.id in ids) view.collapseAndHide()
+        }
+        // Native rebind/scroll code can show the header again. Keep the user's
+        // hidden-filter choice, but leave all unrelated view flags untouched.
+        val visibilityMask = 0x0000000C
+        ViewHookDispatcher.onSetFlags(this) { view, flags, mask ->
+            if ((mask and visibilityMask) != 0 && view.id in ids)
+                (flags and visibilityMask.inv()) or View.GONE
+            else flags
+        }
+        ViewHookDispatcher.onFrameLayoutMeasured(this) { view ->
+            if (view.id in ids && view.measuredHeight != 0) {
+                setMeasuredSize.invoke(view, view.measuredWidth, 0)
+            }
         }
     }
 

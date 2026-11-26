@@ -90,6 +90,24 @@ class SeparateGroup(loader: ClassLoader, preferences: SharedPreferences) :
     override fun doHook() {
         if (!xprefs.getBoolean("separategroups", false)) return
 
+        // Resolve every required adapter BEFORE installing any tab-list mutations.
+        // A partial install used to add a sixth page without a fragment provider.
+        Unobfuscator.loadTabNameMethod(classLoader)
+        Unobfuscator.loadTabListMethod(classLoader)
+        Unobfuscator.loadIconTabMethod(classLoader)
+        Unobfuscator.loadAddMenuAndroidX(classLoader)
+        Unobfuscator.loadGetTabMethod(classLoader)
+        Unobfuscator.loadTabFragmentMethod(classLoader)
+        Unobfuscator.loadRecreateFragmentConstructor(classLoader)
+        Unobfuscator.loadFragmentClass(classLoader)
+        Unobfuscator.loadFabMethod(classLoader)
+        Unobfuscator.loadGetFiltersMethod(classLoader)
+        Unobfuscator.loadTabCountMethod(classLoader)
+        Unobfuscator.loadEnableCountTabMethod(classLoader)
+        Unobfuscator.loadEnableCountTabBadgeWrapper(classLoader)
+        Unobfuscator.loadEnableCountTabBadgeItem(classLoader)
+        Unobfuscator.loadEnableCountTabEmptyBadgeClass(classLoader)
+
         // Newer hosts rename the home navigation view. Resolve the observed host
         // class first, retaining the earlier DexKit search for older hosts.
         val bottomNavigationViewCls = runCatching {
@@ -352,8 +370,12 @@ class SeparateGroup(loader: ClassLoader, preferences: SharedPreferences) :
                     publishResultsMethod.declaringClass,
                     BaseAdapter::class.java
                 ) ?: return@before
-                val convField = ReflectionUtils.getFieldByType(baseField.type, cFragClass)
-                val thiz = convField!!.get(baseField.get(instance)) ?: return@before
+                // 46.82 stores the fragment under its ConversationsFragmentKt base type.
+                val convField = generateSequence(cFragClass as Class<*>?) { it.superclass }
+                    .takeWhile { it.name.startsWith("com.whatsapp.conversationslist.") }
+                    .mapNotNull { ReflectionUtils.getFieldByType(baseField.type, it) }
+                    .firstOrNull() ?: return@before
+                val thiz = convField.get(baseField.get(instance)) ?: return@before
                 val resultList = filterChat(thiz, chatsList)
                 ReflectionUtils.setObjectField(filters, "values", resultList)
                 ReflectionUtils.setIntField(filters, "count", resultList.size)

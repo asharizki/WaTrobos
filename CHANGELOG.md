@@ -1,5 +1,19 @@
 # Riwayat WaTrobos
 
+## 1.0.17 — 26 November 2026
+
+- Hilangkan ruang kosong bekas baris filter di tab Chat/Grup pada WhatsApp 2.26.46.82 saat filter dinonaktifkan.
+- Pertahankan pencarian, Diarsipkan, isi percakapan, dan layout saat filter diaktifkan.
+
+## 1.0.16 — 26 November 2026
+
+- Tambahkan dukungan tepat WhatsApp Messenger 2.26.46.82; versi lain tidak otomatis diizinkan.
+- Migrasikan kelas pembuat media dan adapter audiens/durasi status audio ke struktur WA baru.
+- Perbaiki resolver daftar percakapan yang pindah ke superclass, crash tab Grup, dan helper key asli pesan.
+- Periksa resolver sebelum mengubah daftar tab agar kegagalan tidak menyisakan pemasangan parsial.
+- Pertahankan pemetaan WhatsApp versi lama dan perbarui daftar dukungan/panduan penjadwal.
+- Tambahkan regresi untuk menolak build 2.26.46 lain yang belum diperiksa.
+
 ## 1.0.15 — 21 November 2026
 
 - Tambahkan dukungan untuk WhatsApp Messenger 2.26.44.92.
